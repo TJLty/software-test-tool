@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Data
@@ -24,7 +25,10 @@ public class Batch {
     @TableField(value="remark")
     private String remark;
 
+    @TableField(value="answer")
+    private String answer;
+
     @TableField(exist = false)
-    private List<TestData> testDataList;
+    private HashMap<String,String> testData;
 
 }

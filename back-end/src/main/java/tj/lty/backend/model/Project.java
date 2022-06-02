@@ -15,6 +15,7 @@ import java.util.List;
 @Data
 @TableName("project")
 public class Project {
+
     @TableId(value = "project_id", type = IdType.AUTO)
     private Integer projectId;
     @TableField(value = "project_name")
@@ -26,13 +27,11 @@ public class Project {
     private Date projectCreateTime;
     @TableField(value = "project_type")
     private String projectType;
-    @TableField(value = "url")
-    private String url;
-    @TableField(value = "file_path")
-    private String filePath;
     @TableField(value="project_batch_size")
     private Integer projectBatchSize;
     @TableField(exist = false)
     private List<Batch> batchList;
+    @TableField(exist = false)
+    private List<ProjectTag> tagList;
 
 }

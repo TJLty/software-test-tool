@@ -1,21 +1,19 @@
 <template>
-	<div class="newProjectWindow" @click="quit">
+	<div class="newTagWindow" @click="quit">
 		<div class="mainWindow" @click="childClick">
-			<el-form v-model="form" label-width="120px">
-				<el-form-item label="project name">
-					<el-input v-model="form.name" />
+			<el-form v-model="form" label-width="20px">
+				<el-form-item label="tag">
+					<el-input v-model="form.tag" />
 				</el-form-item>
-				<el-form-item label="introduction">
-					<el-input v-model="form.intro" />
+				<el-form-item label="file" v-if="type=='python'">
+					<el-upload class="upload-file" drag :auto-upload="false" :on-change="fileChange">
+						<div class="el-upload__text">
+							Drop file here or <em>click to upload</em>
+						</div>
+					</el-upload>
 				</el-form-item>
-				<el-form-item label="param number">
-					<el-input v-model="form.size" />
-				</el-form-item>
-				<el-form-item label="project type">
-					<el-select v-model="form.type" placeholder="select type">
-						<el-option label="python" value="python" />
-						<el-option label="web api" value="api" />
-					</el-select>
+				<el-form-item label="url" v-if="form.type=='api'">
+					<el-input v-model="form.url" />
 				</el-form-item>
 
 				<el-form-item>
@@ -30,7 +28,8 @@
 
 <script>
 	export default {
-		emits: ["quit","success"],
+		props: ["projectId", "type"],
+		emits: ["quit", "success", "type"],
 		data() {
 			return {
 				form: {
@@ -41,23 +40,26 @@
 		methods: {
 			submit() {
 				var data = new FormData();
-				data.append('name', this.form.name);
-				data.append('intro', this.form.intro);
-				data.append('type', this.form.type);
-				data.append('size',this.form.size)
+				data.append('project_id', this.projectId);
+				data.append('tag', this.form.tag);
+				if (this.type == 'python')
+					data.append('file', this.form.file.raw);
+				else
+					data.append('url', this.form.url);
+				console.log(this.form.file);
 				var config = {
 					method: 'post',
-					url: '/projects',
+					url: '/tags',
 					data: data
 				};
-				let that=this
+				var that = this;
 				this.$axios(config)
 					.then(function(response) {
 						console.log(JSON.stringify(response.data));
-						that.$emit("success");
+						that.$emit("success")
 					})
 					.catch(function(error) {
-				  console.log(error);
+						console.log(error);
 					});
 			},
 			quit() {
@@ -81,7 +83,7 @@
 </script>
 
 <style scoped>
-	.newProjectWindow {
+	.newTagWindow {
 		width: 100%;
 		height: 100%;
 		z-index: 10;
@@ -94,8 +96,8 @@
 	.mainWindow {
 		padding: 50px;
 		background-color: rgb(220, 220, 220);
-		width: 300px;
-		height: 300px;
+		width: 250px;
+		height: 275px;
 		position: relative;
 		top: 50%;
 		left: 50%;

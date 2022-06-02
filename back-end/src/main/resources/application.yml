@@ -1,0 +1,24 @@
+#服务器设置-----------------------
+server:
+  port: 6020
+#  servlet:
+#    #热部署
+#    jsp:
+#      init-parameters:
+#        development: true
+#    # post表单提交乱码
+#    context-path: /user
+#  tomcat:
+#    uri-encoding: UTF-8
+
+spring:
+  jackson:
+    time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://rm-uf6ndx6mepo84u459bo.mysql.rds.aliyuncs.com/se_test
+    username: root
+    password: Lty@1950698
+
+path:
+  windows: D:/temp
+  linux: /root/temp

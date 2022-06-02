@@ -16,6 +16,7 @@ public class ProjectService {
     @Autowired
     ProjectMapper projectMapper;
 
+
     public List<Project> getAllProjects(){
         List<Project> projectList=projectMapper.selectList(null);
         System.out.println(projectList);
