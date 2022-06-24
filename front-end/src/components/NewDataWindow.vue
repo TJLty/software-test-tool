@@ -44,7 +44,7 @@
 				};
 
 				var response = await this.$axios(config);
-				console.log(response)
+				//console.log(response)
 				this.project = response.data["data"];
 				for (var i = 1; i <= this.project.projectBatchSize; i++) {
 					var name = "arg[" + i.toString() + "]";
@@ -58,7 +58,7 @@
 				this.$emit("quit");
 			},
 			childClick(event) {
-				console.log("click")
+				//console.log("click")
 				event = event || window.event;
 				if (event.stopPropagation) { //W3C阻止冒泡方法  
 					event.stopPropagation();
@@ -69,8 +69,8 @@
 			submit(){
 				this.batch['projectId']=this.projectId;
 				var data = JSON.stringify(this.batch);
-				console.log(data)
-				console.log(this.batch)
+				//console.log(data)
+				//console.log(this.batch)
 				var config = {
 				  method: 'post',
 				  url: '/batches',
@@ -82,7 +82,7 @@
 				var that=this;
 				this.$axios(config)
 				.then(function (response) {
-				  console.log(JSON.stringify(response.data));
+				  //console.log(JSON.stringify(response.data));
 				  that.$emit("success")
 				})
 				.catch(function (error) {
@@ -91,9 +91,9 @@
 			},
 			handleAddDataSuccess() {
 				this.changeShowNewDataWindow();
-				console.log(this.reFresh);
+				//console.log(this.reFresh);
 				this.reFresh=!this.reFresh;
-				console.log(this.reFresh);
+				//console.log(this.reFresh);
 			},
 		},
 		created() {

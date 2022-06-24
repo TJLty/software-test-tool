@@ -10,8 +10,8 @@ import axios from 'axios'
 axios.defaults.baseURL = "http://220.179.227.205:6020/"
 // 设置post请求头的content-Type值
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-// 请求超时5000毫秒
-axios.defaults.timeout = 5000;
+// 请求超时30000毫秒
+axios.defaults.timeout = 30000;
 
 
 

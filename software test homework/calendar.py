@@ -2,7 +2,9 @@ c = input()
 
 
 def checkLeapYear(value):
-    if value % 4 == 0 and value % 400:
+    if value % 4 == 0 and value % 100:
+        return 29
+    elif value%400==0:
         return 29
     else:
         return 28

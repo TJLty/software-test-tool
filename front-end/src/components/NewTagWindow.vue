@@ -46,7 +46,7 @@
 					data.append('file', this.form.file.raw);
 				else
 					data.append('url', this.form.url);
-				console.log(this.form.file);
+				//console.log(this.form.file);
 				var config = {
 					method: 'post',
 					url: '/tags',
@@ -66,7 +66,7 @@
 				this.$emit("quit");
 			},
 			childClick(event) {
-				console.log("click")
+				//console.log("click")
 				event = event || window.event;
 				if (event.stopPropagation) { //W3C阻止冒泡方法  
 					event.stopPropagation();
@@ -75,7 +75,7 @@
 				}
 			},
 			fileChange(file, fileList) {
-				console.log("change")
+				//console.log("change")
 				this.form.file = file;
 			}
 		}

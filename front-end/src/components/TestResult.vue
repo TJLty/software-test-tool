@@ -35,10 +35,10 @@
 		},
 		methods: {
 			drawLine() {
-				console.log("----------------")
-				console.log(this.result)
-				console.log(this.result.correctNumber)
-				console.log("----------------")
+				// console.log("----------------")
+				// console.log(this.result)
+				// console.log(this.result.correctNumber)
+				// console.log("----------------")
 				// 基于准备好的dom，初始化echarts实例
 				let myChart = echarts.init(document.getElementById('myChart'), null, {
 					width: 400,

@@ -43,3 +43,7 @@ sttool*
 HBuilderX.dmp
 mvnw.cmd
 mvnw
+
+dist
+
+.DS_Store

@@ -25,7 +25,7 @@
 
 <style scoped>
 	.floatButton {
-		z-index: 1;
+		z-index: 10;
 		position: absolute;
 		left: 98%;
 		top: 98%;

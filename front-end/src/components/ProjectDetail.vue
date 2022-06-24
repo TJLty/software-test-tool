@@ -62,10 +62,10 @@
 					headers: {}
 				};
 				var response = await this.$axios(config);
-				console.log(response)
+				// console.log(response)
 				this.dataList = response.data["data"];
-				console.log("dataList");
-				console.log(this.dataList);
+				// console.log("dataList");
+				// console.log(this.dataList);
 			},
 			async getProject() {
 				var config = {
@@ -75,7 +75,7 @@
 				};
 
 				var response = await this.$axios(config);
-				console.log(response)
+				// console.log(response)
 				this.project = response.data["data"];
 				this.cols=[]
 				for (var i = 1; i <= this.project.projectBatchSize; i++) {
@@ -90,10 +90,10 @@
 				if(this.version==null){
 					return
 				}
-				console.log(this.version)
+				// console.log(this.version)
 				var testList = [];
 				for (var i in this.selectionList) {
-					console.log(this.selectionList[i])
+					// console.log(this.selectionList[i])
 					testList.push(this.selectionList[i].batchId);
 				}
 				if(testList.length==0){
@@ -112,7 +112,7 @@
 				var that = this;
 				this.$axios(config)
 					.then(function(response) {
-						console.log(JSON.stringify(response.data));
+						// console.log(JSON.stringify(response.data));
 						that.$emit("testFinish",response.data);
 					})
 					.catch(function(error) {
@@ -120,13 +120,13 @@
 					});
 			},
 			deleteData() {
-				console.log(this.selectionList)
+				// console.log(this.selectionList)
 				var deleteList = [];
 				for (var i in this.selectionList) {
-					console.log(this.selectionList[i])
+					// console.log(this.selectionList[i])
 					deleteList.push(this.selectionList[i].batchId);
 				}
-				console.log(deleteList)
+				// console.log(deleteList)
 				var data = JSON.stringify(deleteList);
 
 				var config = {
@@ -140,7 +140,7 @@
 				var that = this;
 				this.$axios(config)
 					.then(function(response) {
-						console.log(JSON.stringify(response.data));
+						// console.log(JSON.stringify(response.data));
 						that.getTestData();
 					})
 					.catch(function(error) {
@@ -149,14 +149,14 @@
 
 			},
 			handleSelectionChange(val) {
-				console.log(val)
+				// console.log(val)
 				this.selectionList = val;
 			},
 			indexMethod(index) {
 				return index + 1;
 			},
 			addVersion(){
-				console.log(addVersion)
+				// console.log(addVersion)
 			}
 		},
 		mounted() {
@@ -166,9 +166,9 @@
 		watch:{
 			reFresh:{
 				handler(newV,oldV){
-					console.log("-------------new value------------")
-					console.log(newV)
-					console.log("----------------------------------")
+					//console.log("-------------new value------------")
+					//console.log(newV)
+					//console.log("----------------------------------")
 					this.getProject();
 					this.getTestData();
 					this.$forceUpdate()
@@ -177,9 +177,9 @@
 			},
 			version:{
 				handler(newV,oldV){
-					console.log("-------------new value------------")
-					console.log(newV)
-					console.log("----------------------------------")
+					//console.log("-------------new value------------")
+					//console.log(newV)
+					//console.log("----------------------------------")
 				},
 				deep:true
 			}
